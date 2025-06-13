@@ -8,6 +8,8 @@ public class Island {
     private int width;
     private int height;
 
+    private Location [][]locations;
+
     private Island(int width, int height) {
         this.height = height;
         this.width = width;
@@ -29,5 +31,23 @@ public class Island {
         System.out.println();
         System.out.println(" Destruyendo la isla...");
         activeIsland = null;
+    }
+
+    public void prepareLocations() {
+        locations = new Location[height][width];
+
+        for(int i = 0; i < height; i ++){
+            for(int j = 0; j < width; j++){
+                locations[i][j] = new Location();
+            }
+        }
+    }
+
+    public void populate(PopulationManager populationManager) {
+        for(int i = 0; i < height; i ++){
+            for(int j = 0; j < width; j++){
+                populationManager.populate(locations[i][j]);
+            }
+        }
     }
 }

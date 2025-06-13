@@ -2,12 +2,19 @@ package codegym.mod2.project.simulation;
 
 public class Simulator {
     private boolean isActive;
+    private final PopulationManager populationManager;
 
     private Simulator(){
-
+        populationManager = new PopulationManager();
     }
 
     public void start() {
+        Island island = Island.getInstance();
+
+        island.prepareLocations();
+        island.populate(populationManager);
+
+
         isActive = true;
     }
 

@@ -1,7 +1,5 @@
 package codegym.mod2.project;
 
-import codegym.mod2.project.menus.HomeMenu;
-
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +8,7 @@ public class Main {
         MenuManager menuManager = new MenuManager();
         Scanner scanner = new Scanner(System.in);
 
-        while(!Thread.currentThread().isInterrupted()){
+        while (!Thread.currentThread().isInterrupted()) {
             Menu menu = menuManager.get();
 
             menu.show();
