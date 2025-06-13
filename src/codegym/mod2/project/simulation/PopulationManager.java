@@ -10,6 +10,7 @@ public class PopulationManager {
 
     private static final int INITIAL_POPULATION_PER_LOCATION = 20;
 
+    @SuppressWarnings("unchecked")
     private static final Class<? extends Animal>[] supportedAnimals = new Class[]{
             Wolf.class,
             Bear.class,

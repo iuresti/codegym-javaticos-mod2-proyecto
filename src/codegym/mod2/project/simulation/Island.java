@@ -5,8 +5,8 @@ import codegym.mod2.project.exception.IslandAlreadyActiveException;
 public class Island {
     private static Island activeIsland;
 
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
 
     private Location [][]locations;
 

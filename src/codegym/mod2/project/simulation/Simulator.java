@@ -4,7 +4,7 @@ public class Simulator {
     private boolean isActive;
     private final PopulationManager populationManager;
 
-    private Simulator(){
+    private Simulator() {
         populationManager = new PopulationManager();
     }
 
@@ -23,10 +23,10 @@ public class Simulator {
     }
 
     private static class UniqueInstanceHolder {
-        private static Simulator simulator = new Simulator();
+        private static final Simulator simulator = new Simulator();
     }
 
-    public static Simulator getInstance(){
+    public static Simulator getInstance() {
         return UniqueInstanceHolder.simulator;
     }
 

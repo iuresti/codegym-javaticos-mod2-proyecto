@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Location {
-    private List<Plant> plants;
-    private List<Animal> animals;
-    private Map<Class<? extends Animal>, Integer> countByAnimal;
+    private final List<Plant> plants;
+    private final List<Animal> animals;
+    private final Map<Class<? extends Animal>, Integer> countByAnimal;
 
     public Location() {
         plants = new ArrayList<>();
