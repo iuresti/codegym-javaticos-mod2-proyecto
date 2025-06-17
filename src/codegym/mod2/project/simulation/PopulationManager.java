@@ -18,6 +18,7 @@ public class PopulationManager {
             Boa.class,
             Fox.class
     };
+    public static final int MAX_PLANTS_PER_LOCATION = 200;
     private final Random random = new Random();
 
 
@@ -43,6 +44,11 @@ public class PopulationManager {
             } else {
                 universe.remove(classAnimal);
             }
+        }
+
+        int maxPlants = random.nextInt(MAX_PLANTS_PER_LOCATION);
+        for(int i = 0; i  < maxPlants; i++) {
+            location.addPlant(new Plant());
         }
     }
 

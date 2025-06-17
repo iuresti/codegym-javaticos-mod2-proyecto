@@ -7,7 +7,8 @@ import codegym.mod2.project.simulation.animals.Carnivore;
         weight = 6,
         maxPerLocation = 20,
         speed = 3,
-        maxNeededFoodKg = 1
+        maxNeededFoodKg = 1,
+        icon = "\uD83E\uDD85"
 )
 public class Eagle extends Carnivore {
 }

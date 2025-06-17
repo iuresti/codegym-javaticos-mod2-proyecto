@@ -50,4 +50,24 @@ public class Island {
             }
         }
     }
+
+    public void print() {
+        System.out.println("==========================================");
+        for(int i = 0; i < height; i ++){
+            for(int j = 0; j < width; j++){
+                locations[i][j].printSummary();
+                System.out.print(" | ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void print(int row, int column) {
+        if(row < 0 || row > height || column < 0 || column > width ){
+            System.err.println("Ubicación inválida");
+            return;
+        }
+
+        locations[row][column].printDetail();
+    }
 }

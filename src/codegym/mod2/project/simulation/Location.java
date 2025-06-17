@@ -37,4 +37,21 @@ public class Location {
     public int getPopulationByAnimal(Class<? extends Animal> classAnimal) {
         return countByAnimal.getOrDefault(classAnimal, 0);
     }
+
+    public void printSummary() {
+        System.out.print("\uD83E\uDD69: " + animals.size() + ", \uD83C\uDF33: " + plants.size());
+    }
+
+    public void printDetail() {
+        System.out.println("\uD83C\uDF33: " + plants.size());
+        countByAnimal.forEach((key, value) -> {
+            SimulationParameters params = key.getAnnotation(SimulationParameters.class);
+            if (params == null) {
+                System.out.println("\uD83E\uDD69?: " + value);
+            } else {
+                System.out.println(params.icon() + ": " + value);
+            }
+
+        });
+    }
 }

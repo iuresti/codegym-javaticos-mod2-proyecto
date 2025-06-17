@@ -12,4 +12,5 @@ public @interface SimulationParameters {
     int maxPerLocation();
     int speed();
     int maxNeededFoodKg();
+    String icon() default "";
 }

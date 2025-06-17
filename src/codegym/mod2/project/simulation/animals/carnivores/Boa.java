@@ -7,7 +7,8 @@ import codegym.mod2.project.simulation.animals.Carnivore;
         weight = 15,
         maxPerLocation = 30,
         speed = 1,
-        maxNeededFoodKg = 3
+        maxNeededFoodKg = 3,
+        icon = "\uD83D\uDC0D"
 )
 public class Boa extends Carnivore {
 }
