@@ -8,26 +8,28 @@ public class Island {
     private final int width;
     private final int height;
 
-    private Location [][]locations;
+    private Location[][] locations;
+
+    private ThreadGroup threadGroup;
 
     private Island(int width, int height) {
         this.height = height;
         this.width = width;
     }
 
-    public static Island getInstance(){
+    public static Island getInstance() {
         return activeIsland;
     }
 
-    public static synchronized void initialize(int width, int height){
-        if(activeIsland != null){
+    public static synchronized void initialize(int width, int height) {
+        if (activeIsland != null) {
             throw new IslandAlreadyActiveException();
         }
 
         activeIsland = new Island(width, height);
     }
 
-    public void destroy(){
+    public void destroy() {
         System.out.println();
         System.out.println(" Destruyendo la isla...");
         activeIsland = null;
@@ -36,16 +38,16 @@ public class Island {
     public void prepareLocations() {
         locations = new Location[height][width];
 
-        for(int i = 0; i < height; i ++){
-            for(int j = 0; j < width; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 locations[i][j] = new Location();
             }
         }
     }
 
     public void populate(PopulationManager populationManager) {
-        for(int i = 0; i < height; i ++){
-            for(int j = 0; j < width; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 populationManager.populate(locations[i][j]);
             }
         }
@@ -53,8 +55,8 @@ public class Island {
 
     public void print() {
         System.out.println("==========================================");
-        for(int i = 0; i < height; i ++){
-            for(int j = 0; j < width; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 locations[i][j].printSummary();
                 System.out.print(" | ");
             }
@@ -63,11 +65,36 @@ public class Island {
     }
 
     public void print(int row, int column) {
-        if(row < 0 || row > height || column < 0 || column > width ){
+        if (row < 0 || row > height || column < 0 || column > width) {
             System.err.println("Ubicación inválida");
             return;
         }
 
         locations[row][column].printDetail();
+    }
+
+    public void start() {
+        threadGroup = new ThreadGroup("locationsThreads");
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                (new Thread(threadGroup, new LocationTask(locations[i][j], i, j))).start();
+            }
+        }
+    }
+
+    public void stop() {
+        threadGroup.interrupt();
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void move(Animal animal, int newColumn, int newRow) {
+
     }
 }

@@ -14,6 +14,7 @@ public class Simulator {
         island.prepareLocations();
         island.populate(populationManager);
 
+        island.start();
 
         isActive = true;
     }
