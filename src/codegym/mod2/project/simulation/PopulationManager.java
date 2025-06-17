@@ -1,6 +1,7 @@
 package codegym.mod2.project.simulation;
 
 import codegym.mod2.project.simulation.animals.carnivores.*;
+import codegym.mod2.project.simulation.animals.hervibores.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +13,10 @@ public class PopulationManager {
 
     @SuppressWarnings("unchecked")
     private static final Class<? extends Animal>[] supportedAnimals = new Class[]{
-            Wolf.class,
-            Bear.class,
-            Eagle.class,
-            Boa.class,
-            Fox.class
+            Wolf.class, Bear.class, Eagle.class, Boa.class, Fox.class,
+            Buffalo.class, Caterpillar.class, Deer.class, Duck.class,
+            Goat.class, Horse.class, Mouse.class, Rabbit.class, Sheep.class,
+            WildBoar.class
     };
     public static final int MAX_PLANTS_PER_LOCATION = 200;
     private final Random random = new Random();
@@ -47,7 +47,8 @@ public class PopulationManager {
         }
 
         int maxPlants = random.nextInt(MAX_PLANTS_PER_LOCATION);
-        for(int i = 0; i  < maxPlants; i++) {
+
+        for (int i = 0; i < maxPlants; i++) {
             location.addPlant(new Plant());
         }
     }
